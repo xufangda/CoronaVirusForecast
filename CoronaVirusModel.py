@@ -58,7 +58,7 @@ delayQ = 4      # quarantine to hospitalization time
 delayH = 10     # heal duration
 
 k_prime = 0.08
-beta_prime = 0.04
+beta_prime = 0.06
 # modification after policies
 
 #basic reproduction number estimation
@@ -84,8 +84,8 @@ def model(Y,t,de,dr,di1,di2,dp,dp2,dq,dh):
     Qdq = Y(t-dq)[2]
     Hdh = Y(t-dh)[5]
     """t-delay ODE"""
-    k = k0+k_prime*logistic(t,20,7)
-    beta_e = beta_0-beta_prime*logistic(t,20,7)
+    k = k0+k_prime*logistic(t,19,7)
+    beta_e = beta_0-beta_prime*logistic(t,19,7)
     
     dsdt = Lambda - mu*S - beta_e*np.exp(-((m1*I+m2*(Q+H))/n))*(I+P+effi*(H+Q)+pro*E)*S/n + theta*Rdr
     dedt = 2500000*np.exp(-5000*t**2)*t + beta_e*np.exp(-((m1*I+m2*(Q+H))/n))*(I+P+effi*(H+Q)+pro*E)*S/n - (mu+xi)*E - (k+ sigma)*Ede
@@ -114,9 +114,9 @@ all_, = plot(tt, yy[:,1]+yy[:,2]+yy[:,3]+yy[:,4]+yy[:,5],c='m', lw=2)
 plt.scatter(time, data, c='c')
 # actual data
 
-plt.text(0, yy[nmax-1,2]/1.2, r'$R_0=%.2f$''\n' r'$R_c \approx %.2f \rightarrow %.2f$'%(R0,Rc,Rc_prime))
+plt.text(0, yy[nmax-1,2]/0.8, r'$R_0=%.2f$''\n' r'$R_c \approx %.2f \rightarrow %.2f$'%(R0,Rc,Rc_prime))
 plt.legend([all_, heal, syndrom_heal], ["All infected","Quarantine+Hospitalization", "All syndromatic"])
 xticks(np.arange(6,40,step = 15), ('Mar', '15', 'Apr', '15', 'May'))
-plt.title("Forecast of future Netherland\nIf the policy on 14 Mar barely works")
+plt.title("Forecast of future Netherland\nIf the measures on 13 Mar work a little")
 
 plt.show()
