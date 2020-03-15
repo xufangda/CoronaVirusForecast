@@ -57,8 +57,8 @@ delayP2 = 10    # heal duration
 delayQ = 4      # quarantine to hospitalization time
 delayH = 10     # heal duration
 
-k_prime = 0.08
-beta_prime = 0.06
+k_prime = 0.06
+beta_prime = 0.08
 # modification after policies
 
 #basic reproduction number estimation
@@ -111,12 +111,13 @@ syndrom_heal, = plot(tt,yy[:,2]+yy[:,3]+yy[:,4]+yy[:,5],c='r',lw=2)
 # plot the quarantine, hospitalizations and the rest of illed patients
 all_, = plot(tt, yy[:,1]+yy[:,2]+yy[:,3]+yy[:,4]+yy[:,5],c='m', lw=2)
 # all unrecovered patients
-plt.scatter(time, data, c='c')
+scatter = plt.scatter(time, data, c='c')
 # actual data
 
 plt.text(0, yy[nmax-1,2]/0.8, r'$R_0=%.2f$''\n' r'$R_c \approx %.2f \rightarrow %.2f$'%(R0,Rc,Rc_prime))
-plt.legend([all_, heal, syndrom_heal], ["All infected","Quarantine+Hospitalization", "All syndromatic"])
+plt.legend([all_, heal, syndrom_heal,scatter], ["All infected","Quarantine+Hospitalization", "All syndromatic","Actual data"])
 xticks(np.arange(6,40,step = 15), ('Mar', '15', 'Apr', '15', 'May'))
+
 plt.title("Forecast of future Netherland\nIf the measures on 13 Mar work a little")
 
 plt.show()
