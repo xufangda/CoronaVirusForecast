@@ -1,5 +1,7 @@
 # CoronaVirusForecast
 
+This is specifically simulated for the Netherland on 15 Mar 2020, trying to forecast the outbreak after strict measures being applied on 13 Mar
+
 Novice compartmental model with time-delay ODE, including incubation, quarantine, hospitalization, super spreader, quarantine leak, immunity, etc.
 
 The parameters for the COVID-19 are generally referenced from other papers
