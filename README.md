@@ -1,1 +1,1 @@
-# CoronaVirusForcast
+# CoronaVirusForecast
