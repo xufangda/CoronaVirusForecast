@@ -5,28 +5,29 @@
 
 # -----Most parameters regarding medical containments are solely based on estimation and fittings------
 
-# Typically I assume under governmental control, the parameters of contanct rate 'beta_e' and quarantine rate 'k0' for the exposed flocks can significally change. One can apply the logistic function for the parameter modification under certain policies.
+# Typically I assume under governmental control, the parameters of contanct rate 'beta_e' and quarantine rate 'k0' for the exposed flocks can significally change. One can apply the _logistic function for the parameter modification under certain policies.
 
 # It is highly recommended that Markov change Monte Carlo (MCMC) is applied on different nodes for a more precise forcast
 
 
 from __future__ import division
 import numpy as np
-from pylab import *
+from numpy import array
+from matplotlib.pylab import *
 from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 from pylab import cos, linspace, subplots
 from ddeint import ddeint
 
-def logistic(t,start,duration):
-    """logistic function, e.g. Fermi-Dirac statistics
+def _logistic(t,start,duration):
+    """_logistic function, e.g. Fermi-Dirac statistics
     from 'start', costs 'duration' days"""
     return 1-1/(np.exp((t-start-duration/2)/(duration/8))+1)
 
 #parameters
 time = np.arange(0,18,1)
-data = np.array([1,2,5,10,18,23,38,82,128,188,264,321,382,503,614,804,959,1135])     # actual data from 27Feb
-n = 17424978    # susceptible individuals
+data = np.array([13,15,19,23,35,45,51,85,115,163,206,273,319,456,590,798,1140,1372])     # actual data from 27Feb
+n = 67782310    # susceptible individuals # UK Population
 beta_0 = 0.8    # contact rate
 gamma_e1 = 1/4  # daily regular heal rate
 gamma_e2 = 1/10 # daily super-spreader heal rate
@@ -84,8 +85,8 @@ def model(Y,t,de,dr,di1,di2,dp,dp2,dq,dh):
     Qdq = Y(t-dq)[2]
     Hdh = Y(t-dh)[5]
     """t-delay ODE"""
-    k = k0+k_prime*logistic(t,19,7)
-    beta_e = beta_0-beta_prime*logistic(t,19,7)
+    k = k0+k_prime*_logistic(t,19,7)
+    beta_e = beta_0-beta_prime*_logistic(t,19,7)
     
     dsdt = Lambda - mu*S - beta_e*np.exp(-((m1*I+m2*(Q+H))/n))*(I+P+effi*(H+Q)+pro*E)*S/n + theta*Rdr
     dedt = 2500000*np.exp(-5000*t**2)*t + beta_e*np.exp(-((m1*I+m2*(Q+H))/n))*(I+P+effi*(H+Q)+pro*E)*S/n - (mu+xi)*E - (k+ sigma)*Ede
@@ -106,18 +107,21 @@ yy = ddeint(model,g,tt,fargs=(delaye,delayR,delayi1,delayi2,delayP,delayP2,delay
 # solving the ODEs
 yy[np.where(yy<0)] = 0
 
-heal, = plot(tt, yy[:,2]+yy[:,5],c='peru', lw=2) #plot the quarantine and hospitalizations
-syndrom_heal, = plot(tt,yy[:,2]+yy[:,3]+yy[:,4]+yy[:,5],c='r',lw=2) 
+fig, ax = subplots(1, figsize=(4, 4))
+heal, = ax.plot(tt, yy[:,2]+yy[:,5],c='peru', lw=2) #plot the quarantine and hospitalizations
+syndrom_heal, = ax.plot(tt,yy[:,2]+yy[:,3]+yy[:,4]+yy[:,5],c='r',lw=2) 
 # plot the quarantine, hospitalizations and the rest of illed patients
-all_, = plot(tt, yy[:,1]+yy[:,2]+yy[:,3]+yy[:,4]+yy[:,5],c='m', lw=2)
+all_, = ax.plot(tt, yy[:,1]+yy[:,2]+yy[:,3]+yy[:,4]+yy[:,5],c='m', lw=2)
+
+
 # all unrecovered patients
 scatter = plt.scatter(time, data, c='c')
-# actual data
 
+# actual data
 plt.text(0, yy[nmax-1,2]/0.8, r'$R_0=%.2f$''\n' r'$R_c \approx %.2f \rightarrow %.2f$'%(R0,Rc,Rc_prime))
 plt.legend([all_, heal, syndrom_heal,scatter], ["All infected","Quarantine+Hospitalization", "All syndromatic","Actual data"])
 xticks(np.arange(6,40,step = 15), ('Mar', '15', 'Apr', '15', 'May'))
 
-plt.title("Forecast of future Netherland\nIf the measures on 13 Mar work a little")
+plt.title("Forecast of future United Kingdom\nIf the measures on 13 Mar work a little")
 
 plt.show()
