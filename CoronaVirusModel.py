@@ -7,7 +7,7 @@
 
 # Typically I assume under governmental control, the parameters of contanct rate 'beta_e' and quarantine rate 'k0' for the exposed flocks can significally change. One can apply the _logistic function for the parameter modification under certain policies.
 
-# It is highly recommended that Markov change Monte Carlo (MCMC) is applied on different nodes for a more precise forcast
+# It is highly recommended that Markov change Monte Carlo (MCMC) is applied on different nodes for a more precise forecast
 
 
 from __future__ import division

@@ -1,14 +1,14 @@
 # CoronaVirusForecast
 
-This repository contains a virus forcast code based on SEQIRH model. This code is forked from https://github.com/chenyg1119/CoronaVirusForecast. 
+This repository contains a virus forecast code based on SEQIRH model. This code is forked from https://github.com/chenyg1119/CoronaVirusForecast. 
 
-[@chenyg1119](https://github.com/chenyg1119) is the original author of this forcast code, orginally for Netherland.
+[@chenyg1119](https://github.com/chenyg1119) is the original author of this forecast code, originally for Netherland.
 
-I have modified this code to UK forcast by changing UK actual virus data, and population. Ref: [Worldometers](https://www.worldometers.info/)
+I have modified this code to UK forecast by changing UK actual virus data, and population. Ref: [Worldometers](https://www.worldometers.info/)
 
-Please beaware this code is for research purpose only. Neither @chenyg1119 nor I takes any responsibilty for the forcast accuracy.
+Please be aware this code is for research purpose only. Neither @chenyg1119 nor I take any responsibility for the forecast accuracy.
 
-Please use Python 2.7 and install all package in requirements.txt. Then, run UK_Forcast.py!! Wish you safe!
+Please use Python 2.7 and install all package in requirements.txt. Then, run UK_Forecast.py!! Wish you safe!
 
 
 --- 

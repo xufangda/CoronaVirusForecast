@@ -7,7 +7,7 @@
 
 # Typically I assume under governmental control, the parameters of contanct rate 'beta_e' and quarantine rate 'k0' for the exposed flocks can significally change. One can apply the _logistic function for the parameter modification under certain policies.
 
-# It is highly recommended that Markov change Monte Carlo (MCMC) is applied on different nodes for a more precise forcast
+# It is highly recommended that Markov change Monte Carlo (MCMC) is applied on different nodes for a more precise forecast
 
 
 from __future__ import division, print_function
@@ -139,12 +139,12 @@ for i in range(0,days+10,10):
     ax.text(i, detected[i*interval]-100, tool_tip,ha='center', va='bottom', fontsize=16)  
 
 
-plt.legend([all_,  syndrom_heal,scatter], ["Forcast All infected","Forcast Detected","Real Data"])
+plt.legend([all_,  syndrom_heal,scatter], ["Forecast All infected","Forecast Detected","Real Data"])
 xticks(np.arange(0,days+1,step = 10), ('26/Feb ', '10/Mar', '20/Mar', '30/Mar', '9/April','19/April','29/April'))
 
 
 ax.text(5, max(detected)*0.8, r'$R_0=%.2f$''\n' r'Quarantine=%.1f%%' %(R0,k1*100),fontsize=20)
 plt.title("Forecast of Future UK Virus Trend", fontsize=20)
 
-ax.figure.savefig("UK_Forcast.png") 
+ax.figure.savefig("UK_Forecast.png") 
 plt.show()
