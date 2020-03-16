@@ -8,7 +8,7 @@ I have modified this code to UK forcast by changing UK actual virus data, and po
 
 Please beaware this code is for research purpose only. Neither @chenyg1119 nor I takes any responsibilty for the forcast accuracy.
 
-Please use Python 2.7 and install all package in requirements.txt.
+Please use Python 2.7 and install all package in requirements.txt. Then, run UK_Forcast.py!! Be safe!
 
 
 --- 
