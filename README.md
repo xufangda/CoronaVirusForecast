@@ -6,20 +6,13 @@ This repository contains a virus forcast code based on SEQIRH model. This code i
 
 I have modified this code to UK forcast by changing UK actual virus data, and population. Ref: [https://www.worldometers.info/]: worldometers.
 
-Please beaware this code is for research purpose only. The forcast is under your 
-Neither @chenyg1119 nor I take any responsibilty for the accuracy.
+Please beaware this code is for research purpose only. Neither @chenyg1119 nor I takes any responsibilty for the forcast accuracy.
+
+Please use Python 2.7 and install all package in requirements.txt.
 
 
-
-
-
-
-
-
-
-
-
-
+--- 
+Original README
 
 This is specifically simulated for the Netherland on 15 Mar 2020, trying to forecast the outbreak after strict measures being applied on 13 Mar
 
