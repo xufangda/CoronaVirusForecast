@@ -2,9 +2,9 @@
 
 This repository contains a virus forcast code based on SEQIRH model. This code is forked from https://github.com/chenyg1119/CoronaVirusForecast. 
 
-@chenyg1119 is the original author of the original forcast code for Netherland. 
+@chenyg1119 is the original author of this forcast code, orginally for Netherland.
 
-I have modified this code to UK forcast by changing UK actual virus data, and population. Ref: [https://www.worldometers.info/]: worldometers.
+I have modified this code to UK forcast by changing UK actual virus data, and population. Ref: [Worldometers]:https://www.worldometers.info/
 
 Please beaware this code is for research purpose only. Neither @chenyg1119 nor I takes any responsibilty for the forcast accuracy.
 
